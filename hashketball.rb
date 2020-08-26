@@ -168,6 +168,13 @@ def player_numbers(team_name)
     jersey_numbers
 end
 
+def player_stats(player_name)
+    found_player = get_players.find do |player|
+        player[:player_name] == player_name
+    end
+    found_player
+end
+
 def get_players
     players = game_hash.keys.map do |team|
         game_hash[team][:players]
