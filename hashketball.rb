@@ -126,4 +126,31 @@ def game_hash
   }
 end
 
-# Write code here
+def num_points_scored(player_name)
+    found_player = get_players.find do |player|
+        player[:player_name] == player_name
+    end
+    found_player[:points]
+end
+
+def shoe_size(player_name)
+    found_player = get_players.find do |player|
+        player[:player_name] == player_name
+    end
+    found_player[:shoe]
+end
+
+def team_colors(location)
+    team_color = game_hash.each do |key, value|
+        if key == location
+            return key[:colors]
+        end
+    end
+end
+
+def get_players
+    players = game_hash.keys.map do |team|
+        game_hash[team][:players]
+    end
+    players.flatten
+end
