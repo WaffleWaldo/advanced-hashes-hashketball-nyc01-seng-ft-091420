@@ -168,6 +168,24 @@ def player_numbers(team_name)
     jersey_numbers
 end
 
+def big_shoe_rebounds
+    largest_shoe = 0
+    game_hash.each do |location, team_data|
+        team_data[:players].each do |hash|
+            if hash[:shoe] > largest_shoe
+                largest_shoe == hash[:shoe]
+            end
+        end
+    end
+    game_hash.each do |location, team_data|
+        team_data[:players].each do |hash|
+            if hash[:shoe] == largest_shoe
+                return hash[:rebounds]
+            end
+        end
+    end
+end
+
 def player_stats(player_name)
     found_player = get_players.find do |player|
         player[:player_name] == player_name
